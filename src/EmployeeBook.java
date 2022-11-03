@@ -56,17 +56,17 @@ public class EmployeeBook {
         return sum;
     }
 
-    public int calcMinSalary(int sumSal) {
-        int indexMinSalary = 0;
+    public int calcMinSalary() {
+        int MinSalary = 0;
+        MinSalary = this.employeeGen[0].getSalary();
         for (int i = 0; i < this.employeeGen.length; i++) {
             if (this.employeeGen[i] != null) {
-                if (this.employeeGen[i].getSalary() < sumSal) {
-                    sumSal = this.employeeGen[i].getSalary();
-                    indexMinSalary = i;
+                if (this.employeeGen[i].getSalary() < MinSalary) {
+                    MinSalary =this.employeeGen[i].getSalary();
                 }
             }
         }
-        return indexMinSalary;
+        return MinSalary;
     }
 
     public int calcMaxSalary() {
