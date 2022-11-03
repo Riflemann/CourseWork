@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
@@ -43,8 +42,8 @@ public class Main {
         System.out.println("Сумма затрат на зарплаты после индексации на 20% в месяц: " + listOfAllEmployee.calcSumSalary());
 
         EmployeeBook listOfDepartment = new EmployeeBook(new Employee[20]);
-        listOfDepartment.setEmployeeGen(listOfAllEmployee.getEmployeeGen().clone());
-        listOfDepartment.deriveDepartment(4);
+        listOfDepartment=listOfAllEmployee.deriveDepartment(4);
+
 
         listOfDepartment.printAllEmployee();
         int sumInDepartment = listOfDepartment.calcSumSalary();
@@ -69,6 +68,7 @@ public class Main {
 
         Employee elEmployee = new Employee(10000000, "Mr Smith", 5);
         listOfAllEmployee.deleteEmployee(1);
+        listOfAllEmployee.putInFreeIndex(elEmployee);
 
         listOfAllEmployee.changeSalaryAndDepartment("Ivanov Ivan", 0, 5);
         listOfAllEmployee.printAllEmployee();

@@ -32,10 +32,9 @@ public class EmployeeBook {
                 return;
             }
             if (i == this.employeeGen.length - 1) {
-                System.out.println("Не удалось добавить всех сторудников. В массиве нет места для новвых сотрудников");
+                System.out.println("Не удалось добавить всех сторудников. В массиве нет места для новых сотрудников");
                 return;
             }
-            continue;
         }
     }
 
@@ -105,20 +104,20 @@ public class EmployeeBook {
 
     }
 
-    public void deriveDepartment(int numDepart) {
-
+    public EmployeeBook deriveDepartment(int numDepart) {
+        Employee [] employeesInDepartment= new Employee[20];
+        int a = 0;
         for (int i = 0; i < this.employeeGen.length; i++) {
             if (this.employeeGen[i] != null) {
-                if (this.employeeGen[i].getDepartment() != numDepart) {
-                    this.employeeGen[i] = null;
+                if (this.employeeGen[i].getDepartment() == numDepart) {
+                    employeesInDepartment[a] = this.employeeGen[i];
+                    a++;
+                    meterEmployeeFromDepartment++;
                 }
             }
         }
-        for (int i = 0; i < this.employeeGen.length; i++) {
-            if (this.employeeGen[i] != null) {
-                EmployeeBook.meterEmployeeFromDepartment += 1;
-            }
-        }
+        EmployeeBook department = new EmployeeBook(employeesInDepartment);
+        return department;
     }
 
     public void printWithoutDepartment() {
@@ -131,16 +130,16 @@ public class EmployeeBook {
     }
 
     public void findLessSalary(int lessSalary) {
-        ArrayList<Employee> b = new ArrayList<Employee>();
+        ArrayList<Employee> tempArrayForEmployees = new ArrayList<Employee>();
         for (int i = 0; i < this.employeeGen.length; i++) {
             if (this.employeeGen[i] != null) {
                 if (this.employeeGen[i].getSalary() < lessSalary) {
-                    b.add(this.employeeGen[i]);
+                    tempArrayForEmployees.add(this.employeeGen[i]);
                 }
             }
         }
-        for (int i = 0; i < b.size(); i++) {
-            System.out.print("Name: " + b.get(i).getName() + " Salary: " + b.get(i).getSalary() + " ID: " + b.get(i).getEmployeesID());
+        for (int i = 0; i < tempArrayForEmployees.size(); i++) {
+            System.out.print("Name: " + tempArrayForEmployees.get(i).getName() + " Salary: " + tempArrayForEmployees.get(i).getSalary() + " ID: " + tempArrayForEmployees.get(i).getEmployeesID());
             System.out.println();
         }
 
